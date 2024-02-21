@@ -20,7 +20,7 @@ def create_contact():
             400,
         )
     
-    new_contact = Contact(first_name, last_name, email)
+    new_contact = Contact(first_name=first_name, last_name=last_name, email=email)
     try:
         db.session.add(new_contact)
         db.session.commit()
@@ -29,7 +29,7 @@ def create_contact():
     
     return jsonify({"message":"User Created!"}), 201
 
-@app.route("/uodate_contact/<int:user_id>", methods = ["PATCH"])
+@app.route("/update_contact/<int:user_id>", methods = ["PATCH"])
 def update_contact(user_id):
     contact = Contact.query.get(user_id)
     
